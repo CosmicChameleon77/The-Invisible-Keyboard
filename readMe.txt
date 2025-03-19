@@ -69,3 +69,7 @@ Changing the window size:
 In the lines which say <window name>.geometry("<number 1>x<number 2>"), try changing the values of <number 1> and <number 2>
 
 If there's anything else you want to modify but don't know how to, please just reach out. I might make a decrypter app later if you'd find it useful.
+
+
+What you can do with the code: 
+See the license for full details but essentially I'm permitting you to download, use and modify the code for your purposes- just not make it proprietary, paid-for or use it for your own purposes without crediting/obtaining permission from me first. I doubt that this will be a problem but it's always important to cover these areas before problems arise
