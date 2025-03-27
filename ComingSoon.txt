@@ -1,0 +1,5 @@
+Next Planned Features: 
+More characters! 
+Custom Buttons 
+Character selector?
+Ability to change button output
