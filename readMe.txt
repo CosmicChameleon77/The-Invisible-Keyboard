@@ -29,6 +29,10 @@ Load Text From File- paste the file path to the file you want to load into the t
 
 Text input- Just type into the big text box. It's scrollable so don't worry about disappearing off the end of the box. 
 
+Show Invisible Characters - replaces invisible characters with their names in the text box. Remember to press hide before saving to file. 
+
+Hide Invisible Characters - replaces invisible character names with their corresponding characters in the text box
+
 
 
 Help- Glitches and Errors:
@@ -68,7 +72,7 @@ Note that if you intend to do this, you need to remember to remove speech marks 
 Changing the window size: 
 In the lines which say <window name>.geometry("<number 1>x<number 2>"), try changing the values of <number 1> and <number 2>
 
-If there's anything else you want to modify but don't know how to, please just reach out. I might make a decrypter app later if you'd find it useful.
+If there's anything else you want to modify but don't know how to, please just reach out. 
 
 
 What you can do with the code: 
