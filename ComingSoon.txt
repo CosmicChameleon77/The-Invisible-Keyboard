@@ -1,5 +1,9 @@
 Next Planned Features: 
 More characters! 
-Custom Buttons 
-Character selector?
-Ability to change button output
+I intend to add as many unicode characters as I can to this but I haven't found a nice easy file full of them so this needs to be done by hand. It's a time consuming process but I intend to eventually add all the invisible characters. One day. If I get really bored. 
+
+Custom Buttons: 
+With an expanded number of available characters comes the need to pick and choose which characters you're using. I will be adding the ability to do so soon, either using a text entry box or more likely (for ease of input validation), a dropdown menu which may, eventually, be searchable.
+
+Code maintainability/readablility improvements:
+The code is easily readable for me but I made it so it follows my way of thinking and other users may wish to modify it without having the easy understanding I get away with using. For this reason I will be adding comments if I can bear to disrupt my lovely layout with big blocks of red and I'll be adding documents to the repository that detail how to maintain and modify the code (some of which can be found in the readme) along with a list of variables and functions with explanations of what you can/can't do with each. 
