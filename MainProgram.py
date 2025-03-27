@@ -8,6 +8,8 @@ hair_space = "\u200a"
 zero_width_no_break_space = "\ufeff"
 zero_width_non_joiner = "\u200c"
 zero_width_joiner = "\u200d"
+characters = [["[Zero-Width Space]","[Hair-Width Space]","[Zero-Width No Break Space]","[Zero-Width Non-Joiner]","[Zero-Width Joiner]"],
+              [zero_width_space, hair_space, zero_width_no_break_space, zero_width_non_joiner, zero_width_joiner]]
 ##################Functions#####################
 def insert_zws(zero_width_space):
     text_box.insert(tk.INSERT, zero_width_space)
@@ -19,7 +21,25 @@ def insert_zwnj(zero_width_non_joiner):
     text_box.insert(tk.INSERT, zero_width_non_joiner)
 def insert_zwj(zero_width_joiner):
     text_box.insert(tk.INSERT, zero_width_joiner)
-    
+
+def findInvisibleCharacters(characters):
+    text = text_box.get("1.0","end-1c")
+    count = 0
+    for i in characters[1]:
+        text = text.replace(characters[1][count],characters[0][count])
+        count+=1
+    text_box.delete("1.0","end")
+    text_box.insert(tk.INSERT, text)
+
+def hideInvisibleCharacters(characters):
+    text = text_box.get("1.0","end-1c")
+    count = 0
+    for i in characters[1]:
+        text = text.replace(characters[0][count],characters[1][count])
+        count+=1
+    text_box.delete("1.0","end")
+    text_box.insert(tk.INSERT, text)
+
 def saveToFile():
     filename = filename_entry.get()
     filename+=".txt"
@@ -102,4 +122,9 @@ readme_button = tk.Button(mainWindow, text = "Open instructions", width = 25, co
 readme_button.pack()
 clearScreenButton = tk.Button(mainWindow, text = "Clear Screen", width = 25, command = secondWarningWindow)
 clearScreenButton.pack()
+show_chars_button = tk.Button(mainWindow, text = "Show Invisible Characters", width = 25, command = lambda: findInvisibleCharacters(characters))
+show_chars_button.pack()
+hide_chars_button = tk.Button(mainWindow, text = "Hide Invisible Characters", width = 25, command = lambda: hideInvisibleCharacters(characters))
+hide_chars_button.pack()
 mainWindow.mainloop()
+
