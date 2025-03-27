@@ -3,30 +3,24 @@ import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import Toplevel
 ##################Characters####################
-zero_width_space = "\u200b"
-hair_space = "\u200a"
-zero_width_no_break_space = "\ufeff"
-zero_width_non_joiner = "\u200c"
-zero_width_joiner = "\u200d"
-characters = [["[Zero-Width Space]","[Hair-Width Space]","[Zero-Width No Break Space]","[Zero-Width Non-Joiner]","[Zero-Width Joiner]"],
-              [zero_width_space, hair_space, zero_width_no_break_space, zero_width_non_joiner, zero_width_joiner]]
+characters = [["Zero Width Space","\u200b"],["Hair Width Space", "\u200a"],["Zero Width No-Break Space", "\ufeff"],["Zero Width Non-Joiner", "\u200c"],["Zero Width Joiner", "\u200d"]]
 ##################Functions#####################
-def insert_zws(zero_width_space):
-    text_box.insert(tk.INSERT, zero_width_space)
-def insert_hs(hair_space):
-    text_box.insert(tk.INSERT, hair_space)
-def insert_zwnbs(zero_width_no_break_space):
-    text_box.insert(tk.INSERT, zero_width_no_break_space)
-def insert_zwnj(zero_width_non_joiner):
-    text_box.insert(tk.INSERT, zero_width_non_joiner)
-def insert_zwj(zero_width_joiner):
-    text_box.insert(tk.INSERT, zero_width_joiner)
+def insert_zws(characters):
+    text_box.insert(tk.INSERT, characters[0][1])
+def insert_hs(characters):
+    text_box.insert(tk.INSERT, characters[1][1])
+def insert_zwnbs(characters):
+    text_box.insert(tk.INSERT, characters[2][1])
+def insert_zwnj(characters):
+    text_box.insert(tk.INSERT, characters[3][1])
+def insert_zwj(characters):
+    text_box.insert(tk.INSERT, characters[4][1])
 
 def findInvisibleCharacters(characters):
     text = text_box.get("1.0","end-1c")
     count = 0
-    for i in characters[1]:
-        text = text.replace(characters[1][count],characters[0][count])
+    for i in range(len(characters)):
+        text = text.replace(characters[count][1],("["+characters[count][0]+"]"))
         count+=1
     text_box.delete("1.0","end")
     text_box.insert(tk.INSERT, text)
@@ -35,7 +29,7 @@ def hideInvisibleCharacters(characters):
     text = text_box.get("1.0","end-1c")
     count = 0
     for i in characters[1]:
-        text = text.replace(characters[0][count],characters[1][count])
+        text = text.replace(("["+characters[count][0]+"]"),characters[count][1])
         count+=1
     text_box.delete("1.0","end")
     text_box.insert(tk.INSERT, text)
@@ -100,15 +94,15 @@ text_box = scrolledtext.ScrolledText(mainWindow, wrap =tk.WORD, width = 100, hei
 text_box.pack(side= tk.LEFT)
 blank_space = tk.Label(mainWindow)
 blank_space.pack()
-zws_button = tk.Button(mainWindow, text = "Zero Width Space", width = 25,height = 2, command = lambda: insert_zws(zero_width_space))
+zws_button = tk.Button(mainWindow, text = "Zero Width Space", width = 25,height = 2, command = lambda: insert_zws(characters))
 zws_button.pack()
-hs_button = tk.Button(mainWindow, text = "Hair Width Space", width = 25, height = 2, command = lambda: insert_hs(hair_space))
+hs_button = tk.Button(mainWindow, text = "Hair Width Space", width = 25, height = 2, command = lambda: insert_hs(characters))
 hs_button.pack()
-zwnbs_button = tk.Button(mainWindow, text = "Zero Width No Break Space", width = 25, height = 2, command = lambda: insert_zwnbs(zero_width_no_break_space))
+zwnbs_button = tk.Button(mainWindow, text = "Zero Width No Break Space", width = 25, height = 2, command = lambda: insert_zwnbs(characters))
 zwnbs_button.pack()
-zwnj_button = tk.Button(mainWindow, text = "Zero Width Non-Joiner", width = 25, height = 2, command = lambda: insert_zwnj(zero_width_non_joiner))
+zwnj_button = tk.Button(mainWindow, text = "Zero Width Non-Joiner", width = 25, height = 2, command = lambda: insert_zwnj(characters))
 zwnj_button.pack()
-zwj_button = tk.Button(mainWindow, text = "Zero Width Joiner", width = 25, height = 2, command = lambda: insert_zwj(zero_width_joiner))
+zwj_button = tk.Button(mainWindow, text = "Zero Width Joiner", width = 25, height = 2, command = lambda: insert_zwj(characters))
 zwj_button.pack()
 save_text_button = tk.Button(mainWindow, text = "Save text to file:", width = 25, command = saveToFile)
 save_text_button.pack()
@@ -127,4 +121,3 @@ show_chars_button.pack()
 hide_chars_button = tk.Button(mainWindow, text = "Hide Invisible Characters", width = 25, command = lambda: hideInvisibleCharacters(characters))
 hide_chars_button.pack()
 mainWindow.mainloop()
-
