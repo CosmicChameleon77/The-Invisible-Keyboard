@@ -6,6 +6,7 @@ Things you must have installed to run the code:
 
 Something capable of running (and ideally editing) .py files. Just install python for this.
 the Tkinter library. If you have python installed but do not have tkinter installed, question why. It's supposed to be pre-packaged with python. Maybe try attempting a clean install of python?
+The Pyperclip Library- go into your command line and type "pip install pyperclip" without the quotes. It can take a moment to wake up or do anything so please be patient and if you're inexperienced with the command line, don't worry. This just installs a python library and it's one I'm almost certain is safe. 
 
 You should also have this file in the same folder as the main program. 
 
@@ -32,6 +33,10 @@ Text input- Just type into the big text box. It's scrollable so don't worry abou
 Show Invisible Characters - replaces invisible characters with their names in the text box. Remember to press hide before saving to file. 
 
 Hide Invisible Characters - replaces invisible character names with their corresponding characters in the text box
+
+Convert To Encrypted - converts to my choice of encryption (to unicode hex codes corresponding to each character, then to morse, then to invisible characters) 
+
+Copy To Clipboard - Who could possibly guess...
 
 
 
@@ -69,7 +74,7 @@ Swap the line that says file = open(filename, "a") in saveToFile() for file = op
 Stopping the program from removing speech marks: 
 Note that if you intend to do this, you need to remember to remove speech marks from filepaths manually. Simply delete this line: loadName = loadName.replace('"', "")
 
-Changing the window size: 
+Changing the default window size: 
 In the lines which say <window name>.geometry("<number 1>x<number 2>"), try changing the values of <number 1> and <number 2>
 
 If there's anything else you want to modify but don't know how to, please just reach out. 
