@@ -2,15 +2,15 @@
 import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import Toplevel
+from tkinter import *
 import pyperclip 
 ##################Characters####################
 characters = [["Zero Width Space","\u200b"],["Hair Width Space", "\u200a"],["Zero Width No-Break Space", "\ufeff"],["Zero Width Non-Joiner", "\u200c"],["Zero Width Joiner", "\u200d"],
               ["Soft Hyphen", "\u00ad"],["Combining Grapheme Joiner", "\u034f"],["Mongolian Vowel Separator","\u180e"],["Left-To-Right Mark","\u200e"],["Right-To-Left Mark","\u200f"],
-              ["Left-To-Right Embedding","\u202a"],["Right-To-Left Embedding","\u202b"],["Pop Directional Formatting","\u202c"],["Left-To-Right Override","\u202d"],["Right-To-Left Override","\u202e"],
-              ["Word Joiner","\u2060"]]
-morse = [["a",".-"],["b","-..."],["c","-.-."],["d","-.."],["e","."],["f","..-."],["1",".----"],["2","..---"],["3","...--"],["4","....-"],["5","....."],["6","-...."],["7","--..."],
-         ["8","---.."],["9","----."],["0","-----"]]
-replacements = [[".","\u200b"],["-","\ufeff"]]
+              ["Left-To-Right Embedding","\u202a"],["Right-To-Left Embedding","\u202b"],["Pop Directional Formatting","\u202c"],["Left-To-Right Override","\u202d"],
+              ["Right-To-Left Override","\u202e"],["Word Joiner","\u2060"],["Inhibit Symmetric Swapping", "\u206a"]]
+replacements = [["a","\u200b"],["b","\ufeff"],["c","\u200c"],["d","\u200d"],["e","\u00ad"],["f","\u034f"],["1","\u180e"],["2","\u200e"],["3","\u200f"],["4","\u202a"],["5","\u202b"],
+         ["6","\u202c"],["7","\u202d"],["8","\u202e"],["9","\u2060"],["0","\u206a"]]
 ##################Functions#####################
 def insert_zws(characters):
     text_box.insert(tk.INSERT, characters[0][1])
@@ -52,19 +52,9 @@ def convertToUnicode():
         newtext += newletter
     text_box.delete("1.0","end")
     text_box.insert(tk.INSERT, newtext)
-
-def convertToMorse():
-    convertToUnicode()
-    text = text_box.get("1.0","end-1c")
-    count = 0
-    for i in range(len(morse)):
-        text = text.replace(morse[count][0],morse[count][1])
-        count+=1
-    text_box.delete("1.0","end")
-    text_box.insert(tk.INSERT, text)
     
 def convertFully():
-    convertToMorse()
+    convertToUnicode()
     text = text_box.get("1.0","end-1c")
     count = 0
     for i in range(len(replacements)):
@@ -76,6 +66,11 @@ def convertFully():
 def copyText():
     text = text_box.get("1.0","end-1c")
     pyperclip.copy(text)
+
+def countChars():
+    text = text_box.get("1.0","end-1c")
+    length = len(text)
+    mainWindow.setvar(name = "charCountText", value = ("Character Count: " + str(length)))
 
 def saveToFile():
     filename = filename_entry.get()
@@ -167,5 +162,9 @@ convert_fully_button = tk.Button(mainWindow, text = "Convert To Encrypted", widt
 convert_fully_button.pack()
 copy_to_clipboard_button = tk.Button(mainWindow, text = "Copy Text To Clipboard", width = 25, command = copyText)
 copy_to_clipboard_button.pack()
+count_characters_button = tk.Button(mainWindow, text = "Count Characters", width = 25, command = countChars)
+count_characters_button.pack()
+charCountText = StringVar(mainWindow, name = "charCountText", value = "Character Count: 0")
+char_count = tk.Label(mainWindow, textvariable = charCountText)
+char_count.pack()
 mainWindow.mainloop()
-
