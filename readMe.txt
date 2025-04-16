@@ -34,9 +34,11 @@ Show Invisible Characters - replaces invisible characters with their names in th
 
 Hide Invisible Characters - replaces invisible character names with their corresponding characters in the text box
 
-Convert To Encrypted - converts to my choice of encryption (to unicode hex codes corresponding to each character, then to morse, then to invisible characters) 
+Convert To Encrypted - converts to my choice of encryption (to unicode hex codes corresponding to each character, then to invisible characters) 
 
 Copy To Clipboard - Who could possibly guess...
+
+Count Characters - updates the character count below it. Might make it update in real time later- but I'd have to be quite bored. 
 
 
 
