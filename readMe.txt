@@ -34,7 +34,9 @@ Show Invisible Characters - replaces invisible characters with their names in th
 
 Hide Invisible Characters - replaces invisible character names with their corresponding characters in the text box
 
-Convert To Encrypted - converts to my choice of encryption (to unicode hex codes corresponding to each character, then to invisible characters) 
+Encrypt - converts to my choice of encryption (to unicode hex codes corresponding to each character, then to invisible characters) 
+
+Decrypt - undoes all that encryption
 
 Copy To Clipboard - Who could possibly guess...
 
