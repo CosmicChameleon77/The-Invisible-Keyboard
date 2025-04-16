@@ -6,10 +6,10 @@ from tkinter import *
 import pyperclip 
 ##################Characters####################
 characters = [["Zero Width Space","\u200b"],["Hair Width Space", "\u200a"],["Zero Width No-Break Space", "\ufeff"],["Zero Width Non-Joiner", "\u200c"],["Zero Width Joiner", "\u200d"],
-              ["Soft Hyphen", "\u00ad"],["Combining Grapheme Joiner", "\u034f"],["Mongolian Vowel Separator","\u180e"],["Left-To-Right Mark","\u200e"],["Right-To-Left Mark","\u200f"],
+              ["Inhibit Arabic Form Shaping", "\u206c"],["Combining Grapheme Joiner", "\u034f"],["Mongolian Vowel Separator","\u180e"],["Left-To-Right Mark","\u200e"],["Right-To-Left Mark","\u200f"],
               ["Left-To-Right Embedding","\u202a"],["Right-To-Left Embedding","\u202b"],["Pop Directional Formatting","\u202c"],["Left-To-Right Override","\u202d"],
               ["Right-To-Left Override","\u202e"],["Word Joiner","\u2060"],["Inhibit Symmetric Swapping", "\u206a"]]
-replacements = [["a","\u200b"],["b","\ufeff"],["c","\u200c"],["d","\u200d"],["e","\u00ad"],["f","\u034f"],["1","\u180e"],["2","\u200e"],["3","\u200f"],["4","\u202a"],["5","\u202b"],
+replacements = [["a","\u200b"],["b","\ufeff"],["c","\u200c"],["d","\u200d"],["e","\u206c"],["f","\u034f"],["1","\u180e"],["2","\u200e"],["3","\u200f"],["4","\u202a"],["5","\u202b"],
          ["6","\u202c"],["7","\u202d"],["8","\u202e"],["9","\u2060"],["0","\u206a"]]
 ##################Functions#####################
 def insert_zws(characters):
@@ -62,6 +62,20 @@ def convertFully():
         count+=1
     text_box.delete("1.0","end")
     text_box.insert(tk.INSERT, text)
+
+def decrypt():
+    text = text_box.get("1.0","end-1c")
+    count = 0
+    for i in range(len(replacements)):
+        text = text.replace(replacements[count][1],replacements[count][0])
+        count +=1
+    textchunks = [(text[i:i+4]) for i in range(0, len(text), 4)]
+    newtext = ""
+    for i in range(0,len(textchunks)):
+        textchunks[i] = chr(int(textchunks[i],16))
+        newtext += textchunks[i]
+    text_box.delete("1.0","end")
+    text_box.insert(tk.INSERT, newtext)
 
 def copyText():
     text = text_box.get("1.0","end-1c")
@@ -158,8 +172,10 @@ show_chars_button = tk.Button(mainWindow, text = "Show Invisible Characters", wi
 show_chars_button.pack()
 hide_chars_button = tk.Button(mainWindow, text = "Hide Invisible Characters", width = 25, command = lambda: hideInvisibleCharacters(characters))
 hide_chars_button.pack()
-convert_fully_button = tk.Button(mainWindow, text = "Convert To Encrypted", width = 25, command = convertFully)
+convert_fully_button = tk.Button(mainWindow, text = "Encrypt", width = 25, command = convertFully)
 convert_fully_button.pack()
+decrypt_button = tk.Button(mainWindow, text = "Decrypt", width = 25, command = decrypt)
+decrypt_button.pack()
 copy_to_clipboard_button = tk.Button(mainWindow, text = "Copy Text To Clipboard", width = 25, command = copyText)
 copy_to_clipboard_button.pack()
 count_characters_button = tk.Button(mainWindow, text = "Count Characters", width = 25, command = countChars)
