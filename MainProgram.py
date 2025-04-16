@@ -6,11 +6,12 @@ from tkinter import *
 import pyperclip 
 ##################Characters####################
 characters = [["Zero Width Space","\u200b"],["Hair Width Space", "\u200a"],["Zero Width No-Break Space", "\ufeff"],["Zero Width Non-Joiner", "\u200c"],["Zero Width Joiner", "\u200d"],
-              ["Inhibit Arabic Form Shaping", "\u206c"],["Combining Grapheme Joiner", "\u034f"],["Mongolian Vowel Separator","\u180e"],["Left-To-Right Mark","\u200e"],["Right-To-Left Mark","\u200f"],
-              ["Left-To-Right Embedding","\u202a"],["Right-To-Left Embedding","\u202b"],["Pop Directional Formatting","\u202c"],["Left-To-Right Override","\u202d"],
-              ["Right-To-Left Override","\u202e"],["Word Joiner","\u2060"],["Inhibit Symmetric Swapping", "\u206a"]]
+              ["Inhibit Arabic Form Shaping", "\u206c"],["Combining Grapheme Joiner", "\u034f"],["Mongolian Vowel Separator","\u180e"],["Left-To-Right Mark","\u200e"],
+              ["Right-To-Left Mark","\u200f"],["Left-To-Right Embedding","\u202a"],["Right-To-Left Embedding","\u202b"],["Pop Directional Formatting","\u202c"],
+              ["Left-To-Right Override","\u202d"],["National Digit Shapes","\u206e"],["Word Joiner","\u2060"],["Inhibit Symmetric Swapping", "\u206a"]]
+
 replacements = [["a","\u200b"],["b","\ufeff"],["c","\u200c"],["d","\u200d"],["e","\u206c"],["f","\u034f"],["1","\u180e"],["2","\u200e"],["3","\u200f"],["4","\u202a"],["5","\u202b"],
-         ["6","\u202c"],["7","\u202d"],["8","\u202e"],["9","\u2060"],["0","\u206a"]]
+         ["6","\u202c"],["7","\u202d"],["8","\u206e"],["9","\u2060"],["0","\u206a"]]
 ##################Functions#####################
 def insert_zws(characters):
     text_box.insert(tk.INSERT, characters[0][1])
