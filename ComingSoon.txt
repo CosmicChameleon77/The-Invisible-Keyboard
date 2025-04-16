@@ -11,3 +11,5 @@ The code is easily readable for me but I made it so it follows my way of thinkin
 Decryption feature for my new encryption feature
 
 Encryption in other styles? 
+
+Make character counter update in real time 
