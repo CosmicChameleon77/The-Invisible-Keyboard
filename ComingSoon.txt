@@ -13,3 +13,5 @@ Encryption in other styles?
 Make character counter update in real time 
 
 minor bug fixes (e.g when decrypting something partially decrypted) 
+
+ensure no problem characters persist- run extensive tests on multiple platforms 
